@@ -33,13 +33,14 @@ def create_file(path: str) -> None:
 
 
 def create_directory() -> str:
-    if sys.argv.index("-f") < sys.argv.index("-d"):
-        path = os.path.join(
-            os.getcwd(), *sys.argv[sys.argv.index("-d") + 1: len(sys.argv)])
+    if "-f" in sys.argv:
+        if sys.argv.index("-f") > sys.argv.index("-d"):
+            path = os.path.join(
+                os.getcwd(), *sys.argv[sys.argv.index("-d") + 1: sys.argv.index("-f")])
     else:
         path = os.path.join(
             os.getcwd(),
-            *sys.argv[sys.argv.index("-d") + 1: sys.argv.index("-f")])
+            *sys.argv[sys.argv.index("-d") + 1: len(sys.argv)])
     os.makedirs(path)
     return path
 
