@@ -20,7 +20,7 @@ def add_content(output_file: TextIO) -> None:
 def create_file(path: str) -> None:
     file_name = sys.argv[sys.argv.index("-f") + 1]
 
-    if os.path.exists(file_name):
+    if os.path.exists(os.path.join(path, file_name)):
         with open(os.path.join(path, file_name), "a") as output_file:
             output_file.write(
                 "\n" + datetime.now().strftime("%Y-%m-%d %H:%M:%S") + "\n")
@@ -46,7 +46,7 @@ def create_directory() -> str:
         path = os.path.join(
             os.getcwd(),
             *sys.argv[sys.argv.index("-d") + 1: len(sys.argv)])
-    os.makedirs(path)
+    os.makedirs(path, exist_ok=True)
     return path
 
 
