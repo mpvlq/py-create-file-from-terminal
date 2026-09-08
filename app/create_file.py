@@ -38,6 +38,10 @@ def create_directory() -> str:
             path = os.path.join(
                 os.getcwd(),
                 *sys.argv[sys.argv.index("-d") + 1: sys.argv.index("-f")])
+        else:
+            path = os.path.join(
+                os.getcwd(),
+                *sys.argv[sys.argv.index("-d") + 1: len(sys.argv)])
     else:
         path = os.path.join(
             os.getcwd(),
