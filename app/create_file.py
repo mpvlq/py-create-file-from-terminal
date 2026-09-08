@@ -36,7 +36,8 @@ def create_directory() -> str:
     if "-f" in sys.argv:
         if sys.argv.index("-f") > sys.argv.index("-d"):
             path = os.path.join(
-                os.getcwd(), *sys.argv[sys.argv.index("-d") + 1: sys.argv.index("-f")])
+                os.getcwd(),
+                *sys.argv[sys.argv.index("-d") + 1: sys.argv.index("-f")])
     else:
         path = os.path.join(
             os.getcwd(),
